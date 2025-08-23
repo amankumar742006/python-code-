@@ -1,0 +1,38 @@
+class BankAccount:
+    def __init__(self, name, acc_no, acc_type, branch, ifsc, status, balance):
+        self.name = name
+        self.acc_no = acc_no
+        self.acc_type = acc_type
+        self.branch = branch
+        self.ifsc = ifsc
+        self.status = status
+        self.balance = balance
+
+    def show_detail(self):
+        print("\n----- Account Details -----")
+        print("Name       :", self.name)
+        print("Account No :", self.acc_no)
+        print("Type       :", self.acc_type)
+        print("Branch     :", self.branch)
+        print("IFSC       :", self.ifsc)
+        print("Status     :", self.status)
+        print("Balance    :", self.balance)
+
+# Predefined accounts
+a = BankAccount("A", "1", "Saving", "Delhi", "ABC01", "Active", 2000)
+b = BankAccount("B", "2", "Saving", "HR", "ABC02", "Inactive", 10000)
+c = BankAccount("C", "3", "Current", "UP", "ABC03", "Active", 5000)
+d = BankAccount("D", "4", "Current", "MP", "ABC04", "Active", 7000)
+
+accounts = {"1": a, "2": b, "3": c, "4": d}
+
+print("Welcome to ABC Bank")
+print("Log in to your Bank Account")
+
+x = input("Enter your name (A/B/C/D): ")
+y = input("Enter your account number (1/2/3/4): ")
+
+if y in accounts and accounts[y].name == x:
+    accounts[y].show_detail()
+else:
+    print("Invalid login credentials!")
