@@ -1,0 +1,23 @@
+print(" Welcome to Veg Paradise ")
+name=input("Enter your name: ")
+persons=int(input("How many persons: "))
+
+menu={"Samosa":20,"Manchurian":100,"French Fries":80,"Momos":60,
+      "Naan":25,"Rice":70,"Butter Paneer":150,"Kadhi":100,"Daal":90,
+      "Mango Ice Cream":60,"Gulab Jamun":50,"Rasmalai":70}
+
+print("\n-- MENU --")
+[print(f"{k} - Rs{v}") for k,v in menu.items()]
+
+order=input("\nEnter order (Item qty, Item qty...): ").split(",")
+bill,total=[],0
+for o in order:
+    try:
+        item,qty=o.strip().rsplit(" ",1); qty=int(qty); item=item.title()
+        if item in menu: cost=menu[item]*qty; bill.append((item,qty,cost)); total+=cost
+        else: print(f"Invaid Item {item} not in menu.")
+    except: print(f" Invalid: {o.strip()}")
+
+print(f"\n-- BILL for {name} ({persons} persons) --")
+[print(f"{i} x{q} = Rs{c}") for i,q,c in bill]
+print("Total = Rs",total," | Each pays ₹",round(total/persons,2))
